@@ -26,7 +26,7 @@ typedef struct {
 FRUSTUM makeFrustum(double fovX, double aspectRatio, double nearValue, double farValue);
 
 // TODO
-//MATRIX4 lookAt( VECTOR3D eyePosition, VECTOR3D target, VECTOR3D upVector )
+MATRIX4 lookAt(VECTOR3D eyePosition, VECTOR3D target, VECTOR3D upVector);
 
 
 #endif

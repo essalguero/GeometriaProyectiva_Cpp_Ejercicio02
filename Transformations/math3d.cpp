@@ -42,7 +42,7 @@ double Magnitude(VECTOR3D a)
 {
 	double valor = 0;
 
-	valor = sqrt(a.x + a.y + a.z);
+	valor = sqrt( (a.x * a.x) + (a.y * a.y) + (a.z * a.z) );
 
 	return valor;
 }
@@ -127,15 +127,15 @@ MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t)
 
 	ret.m[3] = 0;
 
-	ret.m[4] = traspuesta.column0.x;
-	ret.m[5] = traspuesta.column0.y;
-	ret.m[6] = traspuesta.column0.z;
+	ret.m[4] = traspuesta.column1.x;
+	ret.m[5] = traspuesta.column1.y;
+	ret.m[6] = traspuesta.column1.z;
 
 	ret.m[7] = 0;
 
-	ret.m[8] = traspuesta.column0.x;
-	ret.m[9] = traspuesta.column0.y;
-	ret.m[10] = traspuesta.column0.z;
+	ret.m[8] = traspuesta.column2.x;
+	ret.m[9] = traspuesta.column2.y;
+	ret.m[10] = traspuesta.column2.z;
 
 	ret.m[11] = 0;
 
@@ -145,6 +145,32 @@ MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t)
 	ret.m[14] = - DotProduct(t, A.column2);
 		
 	ret.m[15] = 1;
+
+
+	/*ret.m[0] = A.column0.x;
+	ret.m[1] = A.column0.y;
+	ret.m[2] = A.column0.z;
+
+	ret.m[3] = 0;
+
+	ret.m[4] = A.column0.x;
+	ret.m[5] = A.column0.y;
+	ret.m[6] = A.column0.z;
+
+	ret.m[7] = 0;
+
+	ret.m[8] = A.column0.x;
+	ret.m[9] = A.column0.y;
+	ret.m[10] = A.column0.z;
+
+	ret.m[11] = 0;
+
+
+	ret.m[12] = -DotProduct(t, A.column0);
+	ret.m[13] = -DotProduct(t, A.column1);
+	ret.m[14] = -DotProduct(t, A.column2);
+
+	ret.m[15] = 1;*/
 	
 	return ret;
 }

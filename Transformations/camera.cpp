@@ -14,3 +14,31 @@ FRUSTUM makeFrustum(double fovX, double aspectRatio, double nearValue, double fa
 	// TODO : rellenar valores de ret
 	return ret;
 }
+
+MATRIX4 lookAt(VECTOR3D eyePosition, VECTOR3D target, VECTOR3D upVector)
+{
+	VECTOR3D forward, xSide, yUp;
+	MATRIX3 mRot;
+	MATRIX4 m4;
+
+	// Como z apunta hacia fuera de la pantalla (z negativo entra en pantalla), el orden de la resta cambia
+	//forward = Substract(target, eyePosition);
+	forward = Substract(eyePosition, target);
+
+	xSide = CrossProduct(upVector, forward);
+
+	yUp = CrossProduct(forward, xSide);
+
+	// Normalizar los vectores
+	forward = Normalize(forward);
+	xSide = Normalize(xSide);
+	yUp = Normalize(yUp);
+
+	mRot.column0 = xSide;
+	mRot.column1 = yUp;
+	mRot.column2 = forward;
+
+	m4 = InverseOrthogonalMatrix(mRot, eyePosition);
+
+	return m4;
+}
