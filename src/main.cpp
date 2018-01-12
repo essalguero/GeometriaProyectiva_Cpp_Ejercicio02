@@ -31,6 +31,36 @@ FRUSTUM centerFrustum;
 double rotateangle = 0;
 
 
+void tests()
+{
+	MATRIX3 m, r;
+
+	MATRIX4 m4;
+
+	VECTOR3D v, vResult;
+
+	v.x = 1.0;
+	v.y = 1.0;
+	v.z = 1.0;
+
+	m.column0.x = 1;
+	m.column0.y = 2;
+	m.column0.z = 3;
+	m.column1.x = 4;
+	m.column1.y = 5;
+	m.column1.z = 6;
+	m.column2.x = 7;
+	m.column2.y = 8;
+	m.column2.z = 9;
+
+	r = Transpose(m);
+
+	vResult = Transform(m, v);
+
+	m4 = InverseOrthogonalMatrix(m, v);
+
+}
+
 int main(int argc,char **argv)
 {
     camera.screenwidth = 600;
@@ -51,6 +81,8 @@ int main(int argc,char **argv)
     InitCamera(0);
     Lighting();
     
+	tests();
+
     glutMainLoop();
     return(0);
 }

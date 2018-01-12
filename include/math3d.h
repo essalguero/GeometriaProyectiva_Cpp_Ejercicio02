@@ -56,11 +56,11 @@ VECTOR3D CrossProduct(VECTOR3D a, VECTOR3D b);
 //
 double DotProduct(VECTOR3D a, VECTOR3D b);
 //
-//MATRIX3 Transpose(MATRIX3 m);
+MATRIX3 Transpose(MATRIX3 m);
 //
-//VECTOR3D Transform (MATRIX3 m, VECTOR3D a);
+VECTOR3D Transform (MATRIX3 m, VECTOR3D a);
 //
-//MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t);
+MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t);
 
 
 #endif
