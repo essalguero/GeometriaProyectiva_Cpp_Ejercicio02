@@ -63,4 +63,31 @@ VECTOR3D Transform (MATRIX3 m, VECTOR3D a);
 MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t);
 
 
+// Practica 03
+
+typedef struct {
+	float s;
+	VECTOR3D v;
+} QUATERNION;
+
+typedef struct {
+	float yaw; // Rotation around the Y axis.
+	float pitch; // Rotation around the X axis.
+	float roll; // Rotation around the Z axis.
+	QUATERNION orientation; // Cached quaternion equivalent of this euler object.
+} EULER;
+
+// 
+QUATERNION QuaternionFromAngleAxis(float angle, VECTOR3D axis);
+
+// Producto vectorial y escalar
+//QUATERNION QuaternionFromToVectors(VECTOR3D from, VECTOR3D to);
+
+// Multiplicar los dos quaterniones
+QUATERNION Multiply(QUATERNION a, QUATERNION b);
+
+// El quaternion conjugado normalmente no es lo mismo que el invertido. En este caso si porque es un vector unitario
+//QUATERNION Conjugate(QUATERNION a);
+//VECTOR3D RotateWithQuaternion(VECTOR3D a, QUATERNION q);*/
+
 #endif

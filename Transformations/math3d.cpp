@@ -147,30 +147,49 @@ MATRIX4 InverseOrthogonalMatrix(MATRIX3 A, VECTOR3D t)
 	ret.m[15] = 1;
 
 
-	/*ret.m[0] = A.column0.x;
-	ret.m[1] = A.column0.y;
-	ret.m[2] = A.column0.z;
-
-	ret.m[3] = 0;
-
-	ret.m[4] = A.column0.x;
-	ret.m[5] = A.column0.y;
-	ret.m[6] = A.column0.z;
-
-	ret.m[7] = 0;
-
-	ret.m[8] = A.column0.x;
-	ret.m[9] = A.column0.y;
-	ret.m[10] = A.column0.z;
-
-	ret.m[11] = 0;
+	return ret;
+}
 
 
-	ret.m[12] = -DotProduct(t, A.column0);
-	ret.m[13] = -DotProduct(t, A.column1);
-	ret.m[14] = -DotProduct(t, A.column2);
+// Practica 03
 
-	ret.m[15] = 1;*/
-	
+QUATERNION QuaternionFromAngleAxis(float angle, VECTOR3D axis)
+{
+	QUATERNION ret;
+	VECTOR3D unitVector;
+	VECTOR3D vQuaternion;
+
+	float sQuaternion = cos((angle / 2) / PI); // radianes
+
+	unitVector = Normalize(axis);
+
+	vQuaternion = MultiplyWithScalar(sin((angle / 2) / PI), unitVector);
+
+	ret.s = sQuaternion;
+	ret.v = vQuaternion;
+
+	return ret;
+}
+
+QUATERNION Multiply(QUATERNION a, QUATERNION b)
+{
+	VECTOR3D vPVectorial;
+	VECTOR3D aDotScalar, bDotScalar;
+	VECTOR3D vResult;
+
+	QUATERNION ret;
+
+	vPVectorial = CrossProduct(a.v, b.v);
+
+	bDotScalar = MultiplyWithScalar(a.s, b.v);
+	aDotScalar = MultiplyWithScalar(b.s, a.v);
+
+	vPVectorial = Add(Add(bDotScalar, aDotScalar), vPVectorial);
+
+	float sResult = (a.s * b.s) - DotProduct(a.v, b.v);
+
+	ret.s = sResult;
+	ret.v = vResult;
+
 	return ret;
 }
