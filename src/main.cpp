@@ -124,7 +124,7 @@ void Render(void)
     glPushMatrix();
     glRotatef(rotateangle,0.0,1.0,0.0);
 
-    //drawAxis();
+    drawAxis();
     
     glPopMatrix();
 }

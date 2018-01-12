@@ -48,3 +48,88 @@ void drawDot(VECTOR3D position, float sradius, COLOUR color)
 
 	glPopMatrix();
 }
+
+void drawLine(LINE line, COLOUR color, bool doDrawDots)
+{
+	glColor3f(color.r, color.g, color.b);
+	// usa GL_LINE_STRIP en modo inmediato (glBegin/glEnd)
+	// enviar puntos a OpenGL usando glVertex3f
+	
+	glBegin(GL_LINE_STRIP);
+	
+	for (auto &vector3d = line.P.begin(); vector3d != line.P.end(); ++vector3d)
+	{
+		glVertex3f(vector3d->x, vector3d->y, vector3d->z);
+	}
+
+	glEnd();
+
+	glBegin(GL_POINTS);
+	if (doDrawDots)
+	{
+		drawDot(*line.P.begin(), 0.1f);
+		drawDot(*(line.P.end() - 1), 0.1f, color);
+	}
+	glEnd();
+
+}void drawAxis(){
+	// Definir las lineas de los ejes
+	LINE lineX;
+	LINE lineY;
+	LINE lineZ;
+
+	// Definir los colores de los ejes
+	COLOUR colorX;
+	COLOUR colorY;
+	COLOUR colorZ;
+
+	// Definir los vectores para los ejes
+	VECTOR3D origen, puntoX, puntoY, puntoZ;
+
+	// Punto de origen
+	origen.x = 0.0;
+	origen.y = 0.0;
+	origen.z = 0.0;
+
+	// Vector eje X
+	puntoX.x = 1.0;
+	puntoX.y = 0;
+	puntoX.z = 0;
+
+	lineX.P.push_back(origen);
+	lineX.P.push_back(puntoX);
+
+	colorX.r = 1.0;
+	colorX.g = 0;
+	colorX.b = 0;
+
+	drawLine(lineX, colorX, true);
+
+
+	// Vector eje Y
+	puntoY.x = 0;
+	puntoY.y = 1.0;
+	puntoY.z = 0;
+
+	lineY.P.push_back(origen);
+	lineY.P.push_back(puntoY);
+
+	colorY.r = 0;
+	colorY.g = 1.0;
+	colorY.b = 0;
+
+	drawLine(lineY, colorY, true);
+
+
+	// Vector Eje Z
+	puntoZ.x = 0;
+	puntoZ.y = 0;
+	puntoZ.z = 1.0;
+
+	lineZ.P.push_back(origen);
+	lineZ.P.push_back(puntoZ);
+
+	colorZ.r = 0;
+	colorZ.g = 0;
+	colorZ.b = 1.0;
+	drawLine(lineZ, colorZ, false);}

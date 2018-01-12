@@ -42,19 +42,19 @@ static const COLOUR darkgreen = {0,0.6,0};
 //TODO
 VECTOR3D Add(VECTOR3D a, VECTOR3D b);  //Ya implementado como ejemplo.
 //
-//VECTOR3D Substract(VECTOR3D a, VECTOR3D b);
+VECTOR3D Substract(VECTOR3D a, VECTOR3D b);
 //
-//VECTOR3D Multiply(VECTOR3D a, VECTOR3D b);
+VECTOR3D Multiply(VECTOR3D a, VECTOR3D b);
 //
-//VECTOR3D MultiplyWithScalar(float scalar, VECTOR3D a);
+VECTOR3D MultiplyWithScalar(float scalar, VECTOR3D a);
 //
-//double Magnitude(VECTOR3D a);
+double Magnitude(VECTOR3D a);
 //
-//VECTOR3D Normalize(VECTOR3D a);
+VECTOR3D Normalize(VECTOR3D a);
 //
-//VECTOR3D CrossProduct(VECTOR3D a, VECTOR3D b);
+VECTOR3D CrossProduct(VECTOR3D a, VECTOR3D b);
 //
-//double DotProduct(VECTOR3D a, VECTOR3D b);
+double DotProduct(VECTOR3D a, VECTOR3D b);
 //
 //MATRIX3 Transpose(MATRIX3 m);
 //

@@ -5,6 +5,8 @@
 #include "math3d.h"
 #include <vector>
 
+using namespace std;
+
 typedef struct {
 	std::vector<VECTOR3D> P;
 } LINE;
@@ -13,8 +15,8 @@ typedef struct {
 void drawDot(VECTOR3D position, float sradius = 1, COLOUR color = grey);
 
 //TODO
-//void drawLine(LINE line, COLOUR color = grey, bool doDrawDots = false);
-//void drawAxis();
+void drawLine(LINE line, COLOUR color = grey, bool doDrawDots = false);
+void drawAxis();
 
 
 
