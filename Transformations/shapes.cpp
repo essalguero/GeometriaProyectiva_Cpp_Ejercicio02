@@ -132,4 +132,4 @@ void drawLine(LINE line, COLOUR color, bool doDrawDots)
 	colorZ.r = 0;
 	colorZ.g = 0;
 	colorZ.b = 1.0;
-	drawLine(lineZ, colorZ, false);}
+	drawLine(lineZ, colorZ, true);}

@@ -1,5 +1,7 @@
 #include "camera.h"
 
+#include <math.h>
+
 // TODO
 // devuelve los valores de distancia de los planos a partir del fov horizontal
 FRUSTUM makeFrustum(double fovX, double aspectRatio, double nearValue, double farValue)
@@ -12,6 +14,18 @@ FRUSTUM makeFrustum(double fovX, double aspectRatio, double nearValue, double fa
 
 	FRUSTUM ret;
 	// TODO : rellenar valores de ret
+
+	tangent = tan(fovX / 2 * DEG2RAD);   // tangent of half fovY
+	height = nearValue * tangent;          // half height of near plane
+	width = height * aspectRatio;
+
+	ret.bottom = -height;
+	ret.farValue = farValue;
+	ret.left = -width;
+	ret.nearValue = nearValue;
+	ret.right = width;
+	ret.top = height;
+
 	return ret;
 }
 
